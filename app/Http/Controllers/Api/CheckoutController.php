@@ -32,7 +32,7 @@ class CheckoutController extends Controller
         ->where('cart.is_available','1')
         ->where('cart.user_id',$request->user_id)->get()->toArray();
 
-        $taxval=User::select('users.tax','users.delivery_charge')->where('users.id','1')
+        $taxval=User::select('users.tax','users.delivery_charge')->where('users.id','3')
         ->get()->first();
 
         foreach ($cartdata as $value) {
