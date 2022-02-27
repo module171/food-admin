@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun Feb 27 2022 13:43:30 GMT+0700 (Indochina Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/Api/CheckoutController.php
+
+
+Created files:
+* .autogit/logs/log-27-1-2022-10-22-40.txt
+
+
+Deleted files:
+
+
+Renamed files:
