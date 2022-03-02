@@ -122,7 +122,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin'], function () {
 		Route::post('termscondition/update', 'TermsController@update');
 		
 	});
-
+	Route::get('/privacy-policy', 'PrivacyPolicyController@privacypolicy');
 	Route::get('logout', 'AdminController@logout');
 });
 
