@@ -1,0 +1,24 @@
+-------------------- Auto-Git Log --------------------
+		Tue Mar 01 2022 21:02:18 GMT+0700 (Indochina Time)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-27-1-2022-14-13-52.txt
+* public/images/banner/banner-621cc75c21e80.jpg
+* public/images/banner/banner-621cc7657135b.jpg
+* public/images/banner/banner-621cc76da2a22.jpg
+* public/images/category/category-621cc6882f680.jpg
+* public/images/category/category-621cc6a3c7f97.jpeg
+* public/images/ingredients/ingredients-621cc703b455f.jpg
+* public/images/ingredients/ingredients-621cc716af339.jpeg
+* public/images/item/item-621cc703ae792.jpg
+* public/images/item/item-621cc716adbf2.jpeg
+
+
+Deleted files:
+
+
+Renamed files:
