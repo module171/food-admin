@@ -48,7 +48,7 @@ class ItemController extends Controller
             if($checkuser->is_available == '1') 
             {
                 $user_id  = $request->user_id;
-                $itemdata=Item::with('itemimage')->select('item.id','item.item_name','item.item_price',DB::raw('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'))
+                $itemdata=Item::with('itemimage')->select('item.id','item.item_name','item.item_price', ('(case when favorite.item_id is null then 0 else 1 end) as is_favorite'))
                 ->leftJoin('favorite', function($query) use($user_id) {
                     $query->on('favorite.item_id','=','item.id')
                     ->where('favorite.user_id', '=', $user_id);
