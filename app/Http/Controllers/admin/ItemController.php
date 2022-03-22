@@ -74,7 +74,7 @@ class ItemController extends Controller
         else
         {
             $item = new Item;
-        
+
             $item->cat_id =htmlspecialchars($request->cat_id, ENT_QUOTES, 'UTF-8');
             $item->item_name =htmlspecialchars($request->item_name, ENT_QUOTES, 'UTF-8');
             $item->item_price =htmlspecialchars($request->price, ENT_QUOTES, 'UTF-8');
@@ -89,7 +89,7 @@ class ItemController extends Controller
                     $itemimage = new ItemImages;
                     $image = 'item-' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-                    
+
 
                     $file->move('public/images/item', $image);
 
@@ -106,7 +106,7 @@ class ItemController extends Controller
                     $itemimage = new Ingredients;
                     $image = 'ingredients-' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-                    
+
 
                     $file->move('public/images/ingredients', $image);
 
@@ -190,7 +190,7 @@ class ItemController extends Controller
                     $itemimage = new Ingredients;
                     $image = 'ingredients-' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-                    
+
 
                     $file->move('public/images/ingredients', $image);
 
@@ -288,7 +288,7 @@ class ItemController extends Controller
             $item->item_price =htmlspecialchars($request->getprice, ENT_QUOTES, 'UTF-8');
             $item->item_description =htmlspecialchars($request->getdescription, ENT_QUOTES, 'UTF-8');
             $item->delivery_time =htmlspecialchars($request->getdelivery_time, ENT_QUOTES, 'UTF-8');
-            $item->save();           
+            $item->save();
 
             $success_output = 'Item updated Successfully!';
         }
@@ -328,9 +328,9 @@ class ItemController extends Controller
                     $request->image->move('public/images/item', $image);
                     $itemimage->image=$image;
                     unlink(public_path('images/item/'.$request->old_img));
-                }            
+                }
             }
-            $itemimage->save();           
+            $itemimage->save();
 
             $success_output = 'Item updated Successfully!';
         }
@@ -370,9 +370,9 @@ class ItemController extends Controller
                     $request->image->move('public/images/ingredients', $image);
                     $itemimage->image=$image;
                     unlink(public_path('images/ingredients/'.$request->old_img));
-                }            
+                }
             }
-            $itemimage->save();           
+            $itemimage->save();
 
             $success_output = 'Ingredients updated Successfully!';
         }
@@ -385,7 +385,7 @@ class ItemController extends Controller
 
     public function status(Request $request)
     {
-        
+
         $UpdateDetails = Item::where('id', $request->id)
                     ->update(['item_status' => $request->status]);
         $UpdateCart = Cart::where('item_id', $request->id)
