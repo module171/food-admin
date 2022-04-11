@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon Apr 11 2022 14:36:46 GMT+0700 (Indochina Time)
+------------------------------------------------------
+
+Modified files:
+* food_app.sql
+
+
+Created files:
+* .autogit/logs/log-8-3-2022-20-53-7.txt
+
+
+Deleted files:
+
+
+Renamed files:
