@@ -23,12 +23,12 @@ class DriverController extends Controller
         if($request->password == ""){
             return response()->json(["status"=>0,"message"=>"Password is required"],400);
         }
-        
+
         $login=User::where('email',$request['email'])->where('type','=','3')->first();
 
         if(!empty($login))
         {
-            if($login->is_available == '1') 
+            if($login->is_available == '1')
             {
                 if(Hash::check($request->get('password'),$login->password))
                 {
@@ -69,8 +69,8 @@ class DriverController extends Controller
             $data="";
             return response()->json(['status'=>$status,'message'=>$message],422);
         }
-        
-       
+
+
         return response()->json(['status'=>$status,'message'=>$message,'data'=>$data],200);
     }
 
@@ -129,7 +129,7 @@ class DriverController extends Controller
                 $image = 'profile-' . uniqid() . '.' . $request->image->getClientOriginalExtension();
                 $request->image->move('public/images/profile', $image);
                 $user->profile_image=$image;
-            }            
+            }
         }
         $user->name =$request->name;
         $user->save();
@@ -178,7 +178,7 @@ class DriverController extends Controller
         }
 
         $checklogin=User::where('email',$request['email'])->where('type','=','3')->first();
-        
+
         if(empty($checklogin))
         {
             return response()->json(['status'=>0,'message'=>'Email does not exist'],400);
@@ -214,7 +214,7 @@ class DriverController extends Controller
 
         $checkuser=User::where('id',$request->driver_id)->first();
 
-        if($checkuser->is_available == '1') 
+        if($checkuser->is_available == '1')
         {
 
             $cartdata=OrderDetails::select('order.order_total as total_price',DB::raw('SUM(order_details.qty) AS qty'),'order.id','order.order_number','order.status','order.payment_type',DB::raw('DATE_FORMAT(order.created_at, "%d-%m-%Y") as date'))
@@ -263,7 +263,7 @@ class DriverController extends Controller
 
         if(!empty($cartdata))
         {
-            return response()->json(['status'=>1,'message'=>'Order history list Successful','completed_order'=>$completed_order,'ongoing_order'=>$ongoing_order,'data'=>$cartdata],200);
+            return response()->json(['status'=>1,'message'=>'Order history list Successful','completed_order'=>$completed_order,'ongoing_order'=>$ongoing_order,'data'=>$cartdata,'currency'=>env('CURRENCY')],200);
         }
         else
         {
@@ -281,7 +281,7 @@ class DriverController extends Controller
         ->join('item','order_details.item_id','=','item.id')
         ->join('order','order_details.order_id','=','order.id')
         ->where('order_details.order_id',$request->order_id)->get()->toArray();
-        
+
         $status=Order::select('order.address','order.landmark','order.building','order.pincode','order.promocode','order.discount_amount','order.order_number','order.status','order.order_notes','order.delivery_charge','order.lat','order.lang','users.name',\DB::raw("CONCAT('".url('/public/images/profile/')."/', users.profile_image) AS profile_image"),'users.mobile')->where('order.id',$request['order_id'])
         ->join('users','order.user_id','=','users.id')
         ->get()->first();
@@ -314,7 +314,7 @@ class DriverController extends Controller
             'order_notes' => $status->order_notes,
             'delivery_charge' => "$status->delivery_charge",
         );
-        
+
         if(!empty($cartdata))
         {
             return response()->json(['status'=>1,'message'=>'Summery list Successful','delivery_address'=>$status->address,'landmark'=>$status->landmark,'building'=>$status->building,'pincode'=>$status->pincode,'order_number'=>$status->order_number,'name'=>$status->name,'profile_image'=>$status->profile_image,'mobile'=>$status->mobile,'lat'=>$status->lat,'lang'=>$status->lang,'data'=>@$data,'summery'=>$summery],200);
@@ -339,7 +339,7 @@ class DriverController extends Controller
             //Notification
 
             $getuser = Order::where('id', $request->order_id)->first();
-            
+
             $google_api_key = env('FIREBASE');
 
             $title = "Order";
@@ -374,7 +374,7 @@ class DriverController extends Controller
                     'title' => $title,
                     'sound' => 1/*Default sound*/
                     );
-                    
+
                 $fields = array
                     (
                     'to'            => $registrationIds,
@@ -427,7 +427,7 @@ class DriverController extends Controller
                     'title' => $title,
                     'sound' => 1/*Default sound*/
                     );
-                    
+
                 $fields = array
                     (
                     'to'            => $registrationIds,
